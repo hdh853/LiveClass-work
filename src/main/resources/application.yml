@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: enrollment-system
+
+  # H2 Database
+  datasource:
+    url: jdbc:h2:mem:enrollmentdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    defer-datasource-initialization: true
+
+  # SQL Init
+  sql:
+    init:
+      mode: always
+
+# Server
+server:
+  port: 8080
+
+# Custom Properties
+enrollment:
+  cancel:
+    allowed-days: 7
+
+# Pagination
+spring.data.web.pageable:
+  default-page-size: 10
+  max-page-size: 50
+
+# Logging
+logging:
+  level:
+    com.example.enrollment: DEBUG
+    org.hibernate.SQL: DEBUG
